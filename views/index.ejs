@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- my CSS -->
+    <link rel="stylesheet" href="/stylesheets/index.css" type="text/css" />
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- socket io -->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <!-- my js file -->
+    <script type="text/javascript" src="/js/index.js"></script>
+    <title>Chatroom</title>
+  </head>
+  <body>
+    <h1>Welcome to Chatroom!</h1>
+    <div class="alert alert-success" role="alert"></div>
+    <div class="main-container">
+      <div id="user-msg">
+        <h3 class="text-muted">Messages goes here. . .</h3>
+      </div>
+      <div id="user-list">
+        <h3>Participants</h3>
+        <%for(x in users){%>
+        <p><%= users[x]%></p>
+        <% } %>
+      </div>
+    </div>
+    <!-- Chat form -->
+    <form id="msg-form" class="mt-2">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="send a message..."
+          id="msg"
+          class="form-control"
+          aria-label="Text input with segmented dropdown button"
+        />
+        <select class="form-select" name="recipient" id="recipient" required>
+          <option>Everyone</option>
+          <%for(x in users){%>
+          <option><%= users[x] %></option>
+          <% } %>
+        </select>
+        <button type="submit" name="submit" class="btn btn-outline-primary">
+          Send
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

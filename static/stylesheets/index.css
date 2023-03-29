@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  color: rgb(25, 24, 21);
+  text-align: center;
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3a9da0;
+  outline: 2px solid rgb(20, 12, 12);
+  border-radius: 10px;
+  min-height: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+#user-list {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 300px;
+  min-height: 500px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+#user-msg {
+  padding: 20px;
+  margin: 20px;
+}
+form {
+  min-height: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+  align-self: flex-end;
+}
