@@ -24,7 +24,14 @@ io.on("connection", function (socket) {
       }
     }
   });
+  // when user disconnects
+  socket.on("disconnect", () => {
+    console.log("User disconnected!");
+    delete users[socket.id];
+    io.emit("disconnected_user", { socket_id: socket.id });
+  });
 });
+
 //render the index page including the users
 app.get("/", function (req, res) {
   res.render("index", { users });

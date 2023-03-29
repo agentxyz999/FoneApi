@@ -8,8 +8,8 @@ $(window).on("load", function () {
     socket.on("connected_user", (data) => {
       let p = document.createElement("p");
       p.innerText = data.user_name;
+      p.id = data.socket_id;
       $("#user-list").append(p);
-      // console.log(data.socket_id);
     });
 
     //send button clicked / form submitted
@@ -24,7 +24,7 @@ $(window).on("load", function () {
         msg: msg,
         recipient: recipient_name,
       });
-      $(this).trigger("reset"); //reset chatbox after sending msg
+      $(this).trigger("reset"); //reset input field after sending msg
       return false;
     });
 
@@ -38,6 +38,13 @@ $(window).on("load", function () {
           p.innerText = `${data[x].msg}`;
           $("#user-msg").append(h2).append(p);
         }
+      }
+    });
+    //when user disconnects
+    socket.on("disconnected_user", (data) => {
+      let userElement = document.getElementById(data.socket_id);
+      if (userElement) {
+        userElement.remove();
       }
     });
   });
